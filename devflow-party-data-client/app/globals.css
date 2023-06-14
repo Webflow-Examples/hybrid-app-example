@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .card {
+    transform: rotateY(180deg);
+    transform-style: preserve-3d;
+  }
+  .card-back {
+    transform: rotateY(180deg);
+  }
+}
