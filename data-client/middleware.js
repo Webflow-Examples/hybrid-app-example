@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getAccessToken } from '@/utils/webflow_helper';
 
+const {PORT} = process.env
+
 /**
  * A middleware function that retrieves an access token from Webflow and sets it as a cookie
  * or redirects to the login page if the access token is missing.
@@ -13,7 +15,7 @@ export async function middleware(request) {
     // Preflight request. Reply successfully:
     return new NextResponse(null, {
       headers: {
-        'Access-Control-Allow-Origin': 'http://localhost:3001',
+        'Access-Control-Allow-Origin': `https:0.0.0.0:${PORT}`,
         'Access-Control-Allow-Methods': 'GET',
         'Access-Control-Allow-Headers': 'Content-Type',
       },
