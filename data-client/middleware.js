@@ -13,7 +13,7 @@ export async function middleware(request) {
     // Preflight request. Reply successfully:
     return new NextResponse(null, {
       headers: {
-        'Access-Control-Allow-Origin': 'http://localhost:1337',
+        'Access-Control-Allow-Origin': 'http://localhost:3001',
         'Access-Control-Allow-Methods': 'GET',
         'Access-Control-Allow-Headers': 'Content-Type',
       },
