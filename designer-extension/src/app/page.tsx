@@ -50,7 +50,7 @@ interface LoginProps {
   setToken: any;
 }
 
-const BACKEND_URL = "https://www.devflow.party";
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL
 
 const MainPage: React.FC = () => {
   const [page, setPage] = useState(0);
@@ -166,6 +166,7 @@ const SiteSelection: React.FC<SiteSelectionProps> = ({
 
   const fetchSites = async () => {
     try {
+      console.log(`HELLO: ${BACKEND_URL}/api/sites?auth=${token}`)
       const response = await fetch(`${BACKEND_URL}/api/sites?auth=${token}`, {
         method: "GET",
         headers: {

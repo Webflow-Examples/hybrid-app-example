@@ -1,0 +1,17 @@
+{
+  "name": "hybrid-app-example",
+  "version": "1.0.0",
+  "description": "This guide will walk you through the process of building a Hybrid App which allows a user to generate images from a Designer Extension using OpenAI’s Dall-E service and add them to a site’s assets. A Hybrid App uses the capabilities of both a [Data Client App](https://docs.developers.webflow.com/v2.0.0/docs/build-a-data-client) and a [Designer Extension](https://docs.developers.webflow.com/v2.0.0/docs/getting-started-1). Please read through our documentation to familiarize yourself with these concepts.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cd data-client && npm install && npm run dev",
+    "client": "cd designer-extension && npm install && npm run dev",
+    "dev": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "concurrently": "^8.2.1"
+  }
+}
