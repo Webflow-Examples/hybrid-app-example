@@ -1,3 +1,4 @@
 {
-  "name": "devflow-party-ext"
+  "name": "devflow-party-ext",
+  "publicDir": "out"
 }

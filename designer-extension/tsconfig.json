@@ -19,10 +19,14 @@
         "name": "next"
       }
     ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/@webflow"
+    ],
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["config/next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

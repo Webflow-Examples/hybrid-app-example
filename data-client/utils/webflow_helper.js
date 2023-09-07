@@ -1,5 +1,4 @@
-import Webflow from "webflow-api";
-
+import Webflow from "webflow-api"
 const { CLIENT_ID, CLIENT_SECRET } = process.env;
 
 // TODO: We should update our API Client so that any requests that fail with a 403 status code

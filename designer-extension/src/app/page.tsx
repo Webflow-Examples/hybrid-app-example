@@ -1,19 +1,12 @@
 "use client";
 import { motion } from "framer-motion"; // For animations
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
+// import Image from "next/image";
+
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 interface Site {
-  createdOn: string;
-  customDomains: string[];
-  displayName: string;
   id: string;
-  lastPublished: string;
-  lastUpdated: string;
-  previewUrl: string;
-  shortName: string;
-  timeZone: string;
-  workspaceId: string;
 }
 
 interface Image {
@@ -38,19 +31,11 @@ interface ImageOptionsProps {
   token: string;
 }
 
-interface SiteSelectionProps {
-  token: string;
-  setSelectedSite: any;
-  setPage: any;
-}
-
 interface LoginProps {
   setPage: any;
   token: any;
   setToken: any;
 }
-
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL
 
 const MainPage: React.FC = () => {
   const [page, setPage] = useState(0);
@@ -60,28 +45,30 @@ const MainPage: React.FC = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      // Get authorization, if already authorized then set setPage to 1
       const auth = localStorage.getItem("devflow_token");
+
+      const getSiteInfo = async () => {
+        const siteInfo = await webflow.getSiteInfo();
+        const siteId = siteInfo.siteId;
+        setSelectedSite({ id: siteId });
+      };
       setPage(auth ? 1 : 0);
       setToken(auth || "");
+      getSiteInfo();
     }
   }, []);
 
+  // If token is undefined send user to Login Page
   if (!token) {
     return <Login setPage={setPage} token={token} setToken={setToken} />;
   }
 
+  // This function determines which content appears on the page
   switch (page) {
     case 0:
       return <Login setPage={setPage} token={token} setToken={setToken} />;
     case 1:
-      return (
-        <SiteSelection
-          token={token}
-          setSelectedSite={setSelectedSite}
-          setPage={setPage}
-        />
-      );
-    case 2:
       return (
         <UserInput setImages={setImages} setPage={setPage} token={token} />
       );
@@ -145,72 +132,6 @@ const Login: React.FC<LoginProps> = ({
         </div>
       </div>
     </motion.div>
-  );
-};
-
-const SiteSelection: React.FC<SiteSelectionProps> = ({
-  token,
-  setSelectedSite,
-  setPage,
-}: {
-  token: string;
-  setSelectedSite: any;
-  setPage: any;
-}) => {
-  const [sites, setSites] = useState<Site[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    fetchSites();
-  }, []);
-
-  const fetchSites = async () => {
-    try {
-      console.log(`HELLO: ${BACKEND_URL}/api/sites?auth=${token}`)
-      const response = await fetch(`${BACKEND_URL}/api/sites?auth=${token}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      setSites(data.sites);
-    } catch (error) {
-      console.error("Error:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <div className="flex flex-col items-center justify-center py-2 px-2 bg-wf-gray text-wf-lightgray">
-      <div className="text-center space-y-4 flex flex-col h-full justify-between pb-2">
-        <div>
-          <h1 className="text-lg font-bold text-gray-200 mb-2 mt-2">
-            Select a Site
-          </h1>
-          {loading && <p>Loading sites...</p>}
-          {!loading && sites.length === 0 && <p>No sites available</p>}
-          {!loading &&
-            sites.map((site, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setSelectedSite(site);
-                  setPage(2);
-                }}
-                className="mb-2 rounded-md py-2 px-2 text-xs font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer border-gray-700 w-full"
-              >
-                {site.displayName}
-              </button>
-            ))}
-        </div>
-      </div>
-    </div>
   );
 };
 
@@ -395,17 +316,28 @@ const ImageOptions: React.FC<ImageOptionsProps> = ({
           <div className="grid grid-cols-2 gap-2 justify-center mb-2">
             {currentPageImages.map((img, i) => (
               <div key={i} className="relative">
-                <Image
-                  src={img.url}
-                  alt=""
-                  width={128}
-                  height={128}
-                  className="object-cover rounded-md cursor-pointer"
+                <button
+                  className="cursor-pointer"
                   onClick={() => {
                     const index = i + 1 + (page - 1) * 4;
                     navigateToImagePreview(index, img.url);
                   }}
-                />
+                  onKeyDown={(e) => {
+                    // Check if the key is -Enter-;
+                    if (e.key === "Enter") {
+                      const index = i + 1 + (page - 1) * 4;
+                      navigateToImagePreview(index, img.url);
+                    }
+                  }}
+                >
+                  <img
+                    src={img.url}
+                    alt=""
+                    width={128}
+                    height={128}
+                    className="object-cover rounded-md"
+                  />
+                </button>
                 {addedImages.includes(i + 1 + (page - 1) * 4) && (
                   <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-md">
                     <span className="text-white">Added!</span>
@@ -433,7 +365,7 @@ const ImageOptions: React.FC<ImageOptionsProps> = ({
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center h-full overflow-auto space-y-4">
-          <Image
+          <img
             src={selectedImage.url}
             alt=""
             width={256}

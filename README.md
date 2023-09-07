@@ -3,26 +3,19 @@ This guide will walk you through the process of building a Hybrid App which allo
 
 ## Prerequisites
 
-### Webflow Requirements
-
-- A Webflow App with Data Client and Designer Extension Building Blocks enabled
-- The Client ID and Secret from your Webflow App
+- A Webflow workspace and site for development and testing
+- A Webflow App with the [Data Client](https://docs.developers.webflow.com/docs/data-clients) and [Designer Extension](https://docs.developers.webflow.com/docs/designer-extensions) Building Blocks enabled
+- The ID and Secret from your Webflow App
+- An API Key from OpenAIcd
 
 ### System Requirements
 
 -Node.js 16.20 or later
 
-### Tools You'll Need
-
-- A Webflow site for development and testing
--Terminal
--Code Editor
--Browser
 
 ### Familiarity With
 
--Single-Page Web Applications
--HTML, CSS
+- Building single-page applications
 
 ## What we're building
 
