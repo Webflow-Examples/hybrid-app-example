@@ -55,22 +55,22 @@ Webflow doesn’t currently automatically refresh the assets panel, so you will 
 
 We're going to use GitHub codespaces as our development environment, to tak advantage of it's built in port forwarding, but please feel free to follow along developing locally.
 
-1. [ ]**Clone the example repo to your development environment.** Navigate the [Hybrid-App-Example repo](https://github.com/Webflow-Examples/Hybrid-App-Example/tree/main). Select the `code` button and open the repo in a GitHub codespace or, if you'd like, clone the repo to your local environment.
+1. [ ] **Clone the example repo to your development environment.** Navigate the [Hybrid-App-Example repo](https://github.com/Webflow-Examples/Hybrid-App-Example/tree/main). Select the `code` button and open the repo in a GitHub codespace or, if you'd like, clone the repo to your local environment.
 
-2. [ ]**Find your redirect URI.** If you're using GitHub Codespaces, you'll want to get the URI of the forwarded port to use as the redirect URL for our Data Client app. To do this, copy the Github Codespaces URL in the address bar of your browser. Then add a `-3001.app` to the link as shown: 
+2. [ ] **Find your redirect URI.** If you're using GitHub Codespaces, you'll want to get the URI of the forwarded port to use as the redirect URL for our Data Client app. To do this, copy the Github Codespaces URL in the address bar of your browser. Then add a `-3001.app` to the link as shown: 
     - Orignial URL: `https://curly-train-5rg69pjrrp9f4v6v.github.dev`
     - Modified URL: `https://curly-train-5rg69pjrrp9f4v6v-3001.app.github.dev`
 
 > [!NOTE]
 > If you're hosting your app locally, copy the URI for your port. Please note, redirect URIs for data clients are required to use `https`. You can use tools like NGROK to expose your local server over `https` or setup your own security certificate for local development.
 
-3. [ ]**Modify your App's redirect URI.** Navigate to the "App Development" section of your Workspace Settings and select the `Edit App` button. Select the "Building Blocks" panel. In the "Data Client" section, replace the redirect URI with the your local development URI. Click the `Save app` button.
+3. [ ] **Modify your App's redirect URI.** Navigate to the "App Development" section of your Workspace Settings and select the `Edit App` button. Select the "Building Blocks" panel. In the "Data Client" section, replace the redirect URI with the your local development URI. Click the `Save app` button.
 
 ![Paste your redirect URI in the Yellow Box](/public/edit-app.png)
 
-4. [ ]**Configure your environment variables.** In your IDE, copy the `.env.example` file and name it `.env.local`. Replace the variables with your own.
+4. [ ] **Configure your environment variables.** In your IDE, copy the `.env.example` file and name it `.env.local`. Replace the variables with your own.
 
-5. [ ]**Run your Hybrid App!** Now it's time to run your App! Open your terminal and navigate to your project folder. Enter the following command: `npm run dev`. This will install the dependencies for your Data Client and Designer Extension, and then run them on their default ports `3001` and `1337`, respectively. 
+5. [ ] **Run your Hybrid App!** Now it's time to run your App! Open your terminal and navigate to your project folder. Enter the following command: `npm run dev`. This will install the dependencies for your Data Client and Designer Extension, and then run them on their default ports `3001` and `1337`, respectively. 
 
 ## Step 2: Authorize your Data Client
 
