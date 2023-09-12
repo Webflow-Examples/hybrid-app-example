@@ -36,7 +36,7 @@ export async function POST(request) {
   if (!imageURL || !siteId || !auth) {
     return NextResponse.json({ error: 'Missing imageURL or siteId or auth' }, {
       headers: {
-        'Access-Control-Allow-Origin': 'http://localhost:1337',
+        'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'POST',
         'Access-Control-Allow-Headers': 'Content-Type',
       },
@@ -94,7 +94,7 @@ export async function POST(request) {
     await fs.unlink(filePath);
     return NextResponse.json({ ok: true, status: uploadResponse.status }, {
       headers: {
-        'Access-Control-Allow-Origin': 'http://localhost:1337',
+        'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'POST',
         'Access-Control-Allow-Headers': 'Content-Type',
       },
@@ -104,12 +104,13 @@ export async function POST(request) {
   }
 }
 
+// Send query to DALL-E
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   if (!searchParams.get('auth')) {
     return NextResponse.json({ok: false, error: 'Not authenticated'}, {
       headers: {
-        'Access-Control-Allow-Origin': 'http://localhost:1337',
+        'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET',
         'Access-Control-Allow-Headers': 'Content-Type',
       },
@@ -123,7 +124,7 @@ export async function GET(request) {
     const response = await generateImages(prompt, n, size);
     return NextResponse.json({ images: response.data.data }, {
       headers: {
-        'Access-Control-Allow-Origin': 'http://localhost:1337',
+        'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET',
         'Access-Control-Allow-Headers': 'Content-Type',
       },
