@@ -16,7 +16,7 @@ You'll set up an app named "Devflow Party". Once installed, this app integrates 
 While these two App building blocks work closely together, they are hosted and managed very differently in a Hybrid App.  
 Hybrid Apps are split into two different areas of functionality:
 
-This example app is contained within two separate folders inside the [Hybrid Example App repository](https://github.com/Webflow-Examples/Hybrid-App-Example)
+This example app is contained within two separate folders.
 
 - designer-extension
 - data-client
