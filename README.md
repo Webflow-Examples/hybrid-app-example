@@ -1,22 +1,5 @@
 # Building a Hybrid App
-This guide will walk you through the process of building a Hybrid App which allows a user to generate images from a Designer Extension using OpenAI’s Dall-E service and add them to a site’s assets. A Hybrid App uses the capabilities of both a [Data Client App](https://docs.developers.webflow.com/v2.0.0/docs/build-a-data-client) and a [Designer Extension](https://docs.developers.webflow.com/v2.0.0/docs/getting-started-1). Please read through our documentation to familiarize yourself with these concepts. 
-
-## Prerequisites
-
-- A Webflow workspace and site for development and testing
-- A Webflow App with the [Data Client](https://docs.developers.webflow.com/docs/data-clients) and [Designer Extension](https://docs.developers.webflow.com/docs/designer-extensions) Building Blocks enabled
-- The ID and Secret from your Webflow App
-- A free [OpenAI](https://openai.com) account with an [API Key](https://platform.openai.com/account/api-keys)
-
-
-### System Requirements
-
--Node.js 16.20 or later
-
-
-### Familiarity With
-
-- Building single-page applications
+This guide will walk you through the process of building a Hybrid App which allows a user to generate images from a Designer Extension using OpenAI’s Dall-E service and add them to a site’s assets. A Hybrid App uses the capabilities of both a [Data Client App](https://docs.developers.webflow.com/v2.0.0/docs/build-a-data-client) and a [Designer Extension](https://docs.developers.webflow.com/v2.0.0/docs/getting-started-1). Please read through our documentation to familiarize yourself with these concepts.  
 
 ## What we're building
 
@@ -25,6 +8,8 @@ This guide will walk you through the process of building a Hybrid App which allo
 We're diving into the capabilities of a Webflow App with an example that showcases Designer Extensions and Data Clients. 
 
 You'll set up an app named "Devflow Party". Once installed, this app integrates a Designer Extension into the Webflow canvas, prompting users to generate images via OpenAI. Following this, it employs Webflow's REST APIs to automatically integrate the chosen images into a Webflow site.
+
+[🏃🏽‍♂️ Jump to the tutorial!](#walkthrough)
 
 ### App Structure
 
@@ -44,7 +29,8 @@ This example implements a lightweight API to pass data between the Designer Exte
 
 While you can call third-party APIs directly from the Designer Extension, we’ve decided to call APIs from the Data Client, so that we're keeping all secrets contained on our backend.
 
-### Calling Webflow APIs (Adding Images to Site Assets)
+### Calling Webflow APIs
+> Adding Images to Site Assets
 
 While the Data Client functionality can be integrated with your existing service, we’ve chosen to build a stand-alone server for the purposes of this example. This server, Devflow Party, has helpers to handle OAuth as well as Webflow Data API requests.
 
@@ -53,6 +39,17 @@ Once a user has used the Designer Extension to generate the desired images, our 
 Once the service receives an upload request, it will temporarily cache the image to disk, then upload the image to S3 and apply it to the site’s Assets list.
 
 Webflow doesn’t currently automatically refresh the assets panel, so you will need to manually refresh the designer in order to see the newly uploaded assets.
+
+# Walkthrough
+
+### Prerequisites
+
+- A Webflow workspace and site for development and testing
+- A Webflow App with the [Data Client](https://docs.developers.webflow.com/docs/data-clients) and [Designer Extension](https://docs.developers.webflow.com/docs/designer-extensions) Building Blocks enabled
+- The ID and Secret from your Webflow App
+- A free [OpenAI](https://openai.com) account with an [API Key](https://platform.openai.com/account/api-keys)
+- Node.js 16.20 or later
+- Familiarity building single-page applications
 
 ## Step 1: Setting up your development environment
 
