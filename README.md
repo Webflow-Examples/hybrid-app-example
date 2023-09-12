@@ -44,12 +44,12 @@ Webflow doesn’t currently automatically refresh the assets panel, so you will 
 
 ### Prerequisites
 
-[x] A Webflow workspace and site for development and testing
-[x] A Webflow App with the [Data Client](https://docs.developers.webflow.com/docs/data-clients) and [Designer Extension](https://docs.developers.webflow.com/docs/designer-extensions) Building Blocks enabled
-[x] The ID and Secret from your Webflow App
-[x] A free [OpenAI](https://openai.com) account with an [API Key](https://platform.openai.com/account/api-keys)
-[x] Node.js 16.20 or later
-[x] Familiarity building single-page applications
+- [x] A Webflow workspace and site for development and testing
+- [x] A Webflow App with the [Data Client](https://docs.developers.webflow.com/docs/data-clients) and [Designer Extension](https://docs.developers.webflow.com/docs/designer-extensions) Building Blocks enabled
+- [x] The ID and Secret from your Webflow App
+- [x] A free [OpenAI](https://openai.com) account with an [API Key](https://platform.openai.com/account/api-keys)
+- [x] Node.js 16.20 or later
+- [x] Familiarity building single-page applications
 
 ## Step 1: Setting up your development environment
 
