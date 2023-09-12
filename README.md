@@ -25,20 +25,16 @@ This example app is contained within two separate folders.
 
 ![diagram of how apps communicate](https://user-images.githubusercontent.com/32463/246034069-06bd9352-ca53-4442-973a-00890bf34490.png)
 
-This example implements a lightweight API to pass data between the Designer Extension and Data Client. The Data Client  makes API calls to the Webflow Data API and serves that data to your Extension.
-
-While you can call third-party APIs directly from the Designer Extension, we’ve decided to call APIs from the Data Client, so that we're keeping all secrets contained on our backend.
+This example implements a lightweight API to pass data between the Designer Extension and Data Client. The Data Client  makes API calls to the Webflow Data API and serves that data to your Extension. While it's possible to call third-party APIs directly from the Designer Extension, we’ve decided to call APIs from the Data Client, so that we're keeping all secrets contained on our backend.
 
 ### Calling Webflow APIs
 > Adding Images to Site Assets
 
-While the Data Client functionality can be integrated with your existing service, we’ve chosen to build a stand-alone server for the purposes of this example. This server, Devflow Party, has helpers to handle OAuth as well as Webflow Data API requests.
+Devflow Party, our Data Client app, spins up a server with helpers to handle OAuth as well as Webflow Data API requests.
 
 Once a user has used the Designer Extension to generate the desired images, our Data Client will need to add them to the site’s Assets. The user will select the images they wish to add, and the Devflow Extension will send a request to the Devflow service, telling the service to upload the assets.
 
 Once the service receives an upload request, it will temporarily cache the image to disk, then upload the image to S3 and apply it to the site’s Assets list.
-
-Webflow doesn’t currently automatically refresh the assets panel, so you will need to manually refresh the designer in order to see the newly uploaded assets.
 
 # Walkthrough
 
