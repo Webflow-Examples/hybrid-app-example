@@ -42,6 +42,11 @@ const MainPage: React.FC = () => {
   const [token, setToken] = useState<string>("");
   const [selectedSite, setSelectedSite] = useState<Site | null>(null);
   const [images, setImages] = useState<Image[]>([]);
+  const [mounted, setMounted] = React.useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -58,6 +63,10 @@ const MainPage: React.FC = () => {
       getSiteInfo();
     }
   }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   // If token is undefined send user to Login Page
   if (!token) {
