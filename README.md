@@ -42,12 +42,15 @@ Once the service receives an upload request, it will temporarily cache the image
 
 - [x] A Webflow workspace and site for development and testing
 - [x] A Webflow App with the [Data Client](https://docs.developers.webflow.com/docs/data-clients) and [Designer Extension](https://docs.developers.webflow.com/docs/designer-extensions) Building Blocks enabled
-- [x] The ID and Secret from your Webflow App
+- [x] The ID, Secret, and Client URL from your Webflow App
 - [x] A free [OpenAI](https://openai.com) account with an [API Key](https://platform.openai.com/account/api-keys)
 - [x] Node.js 16.20 or later
 - [x] Familiarity building single-page applications
 
 ## Step 1: Setting up your development environment
+
+First, install the Webflow CLI:
+`npm i @webflow/webflow-cli -g`
 
 We're going to use GitHub codespaces as our development environment, to tak advantage of it's built in port forwarding, but please feel free to follow along developing locally.
 
@@ -64,7 +67,11 @@ We're going to use GitHub codespaces as our development environment, to tak adva
 
 ![Paste your redirect URI in the Yellow Box](/public/edit-app.png)
 
-4. **Configure your environment variables.** In your IDE, copy the `.env.example` file and name it `.env.local`. Replace the variables with your own.
+4. **Configure your environment variables.** In your IDE, copy the `.env.local.example` file and name it `.env.local`. Replace the variables with your own.
+
+> [!NOTE]
+> There are 2 .env.local.example files. You must update the environment variables for both.
+> "NEXT_PUBLIC_BACKEND_URL" should be set to the public URL of your Data Client.
 
 5. **Run your Hybrid App!** Now it's time to run your App! Open your terminal and navigate to your project folder. Enter the following command: `npm run dev`. This will install the dependencies for your Data Client and Designer Extension, and then run them on their default ports `3001` and `1337`, respectively. 
 
