@@ -1,4 +1,8 @@
 # Building a Hybrid App
+
+> [!WARNING]  
+> This project is archived! To see an up-to-date example of a Hybrid App w/ Authentication, [check out this project](https://github.com/Webflow-Examples/Hybrid-App-Authentication/tree/main).
+
 This guide will walk you through the process of building a Hybrid App which allows a user to generate images from a Designer Extension using OpenAI’s Dall-E service and add them to a site’s assets. A Hybrid App uses the capabilities of both a [Data Client App](https://docs.developers.webflow.com/v2.0.0/docs/build-a-data-client) and a [Designer Extension](https://docs.developers.webflow.com/v2.0.0/docs/getting-started-1). Please read through our documentation to familiarize yourself with these concepts.  
 
 ## What we're building
